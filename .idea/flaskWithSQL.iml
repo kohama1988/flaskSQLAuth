@@ -15,6 +15,7 @@
     <option name="TEMPLATE_FOLDERS">
       <list>
         <option value="$MODULE_DIR$/apps/crud/templates" />
+        <option value="$MODULE_DIR$/apps/auth/templates" />
       </list>
     </option>
   </component>
