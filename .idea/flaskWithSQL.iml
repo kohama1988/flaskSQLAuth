@@ -16,6 +16,7 @@
       <list>
         <option value="$MODULE_DIR$/apps/crud/templates" />
         <option value="$MODULE_DIR$/apps/auth/templates" />
+        <option value="$MODULE_DIR$/apps/detector/templates" />
       </list>
     </option>
   </component>
