@@ -3,7 +3,9 @@ from apps.app import db
 from apps.crud.models import User
 from apps.detector.models import UserImage
 
-dt = Blueprint('detector', __name__, template_folder='templates')
+dt = Blueprint('detector', __name__, template_folder='templates',
+               static_folder='static',
+               static_url_path='/static/css')
 
 @dt.route('/')
 def index():

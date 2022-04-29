@@ -4,7 +4,7 @@ from apps.crud.models import User
 from apps.crud.forms import UserForm
 from flask_login import login_required
 
-crud = Blueprint('crud',__name__,template_folder='templates',static_folder='static')
+crud = Blueprint('crud',__name__,template_folder='templates')
 
 @crud.route('/')
 @login_required
