@@ -13,6 +13,7 @@ login_manager = LoginManager()
 login_manager.login_view = 'auth.signup'
 # login_message属性にログイン後に表示するメッセージを指定する、なにもない場合、空を指定する
 login_manager.login_message = ''
+basedir = Path(__file__).parent.parent
 
 def create_app():
     app = Flask(__name__)
@@ -23,7 +24,9 @@ def create_app():
         # コンソールログに出力する設定
         SQLALCHEMY_ECHO=True,
         WTF_CSRF_SECRET_KEY='alsdkjqlekjr',
+        UPLOAD_FOLDER=str(Path(basedir,'apps','detector','images'))
     )
+    print(basedir)
     db.init_app(app)
     Migrate(app,db)
     csrf.init_app(app)
