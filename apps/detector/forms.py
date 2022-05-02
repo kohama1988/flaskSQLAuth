@@ -9,3 +9,9 @@ class UploadImageForm(FlaskForm):
         'サポートされていない画像形式です。'),
     ])
     submit = SubmitField('アップロード')
+
+class DetectorForm(FlaskForm):
+    submit = SubmitField('検知')
+
+class DeleteForm(FlaskForm):
+    submit = SubmitField('削除')

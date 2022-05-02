@@ -1,6 +1,6 @@
 from pathlib import Path
 import os
-from flask import Flask
+from flask import Flask, render_template
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf.csrf import CSRFProtect
@@ -24,7 +24,100 @@ def create_app():
         # コンソールログに出力する設定
         SQLALCHEMY_ECHO=True,
         WTF_CSRF_SECRET_KEY='alsdkjqlekjr',
-        UPLOAD_FOLDER=str(Path(basedir,'apps','detector','images'))
+        UPLOAD_FOLDER=str(Path(basedir,'apps','detector','images')),
+        LABELS=[
+            "unlabeled",
+            "person",
+            "bicycle",
+            "car",
+            "motorcycle",
+            "airplane",
+            "bus",
+            "train",
+            "truck",
+            "boat",
+            "traffic light",
+            "fire hydrant",
+            "street sign",
+            "stop sign",
+            "parking meter",
+            "bench",
+            "bird",
+            "cat",
+            "dog",
+            "horse",
+            "sheep",
+            "cow",
+            "elephant",
+            "bear",
+            "zebra",
+            "giraffe",
+            "hat",
+            "backpack",
+            "umbrella",
+            "shoe",
+            "eye glasses",
+            "handbag",
+            "tie",
+            "suitcase",
+            "frisbee",
+            "skis",
+            "snowboard",
+            "sports ball",
+            "kite",
+            "baseball bat",
+            "baseball glove",
+            "skateboard",
+            "surfboard",
+            "tennis racket",
+            "bottle",
+            "plate",
+            "wine glass",
+            "cup",
+            "fork",
+            "knife",
+            "spoon",
+            "bowl",
+            "banana",
+            "apple",
+            "sandwich",
+            "orange",
+            "broccoli",
+            "carrot",
+            "hot dog",
+            "pizza",
+            "donut",
+            "cake",
+            "chair",
+            "couch",
+            "potted plant",
+            "bed",
+            "mirror",
+            "dining table",
+            "window",
+            "desk",
+            "toilet",
+            "door",
+            "tv",
+            "laptop",
+            "mouse",
+            "remote",
+            "keyboard",
+            "cell phone",
+            "microwave",
+            "oven",
+            "toaster",
+            "sink",
+            "refrigerator",
+            "blender",
+            "book",
+            "clock",
+            "vase",
+            "scissors",
+            "teddy bear",
+            "hair drier",
+            "toothbrush",
+        ],
     )
     print(basedir)
     db.init_app(app)
@@ -46,5 +139,14 @@ def create_app():
     app.register_blueprint(auth_views.auth, url_prefix='/auth')
     app.register_blueprint(dt_views.dt)
 
+    app.register_error_handler(404, page_not_found)
+    app.register_error_handler(500, internal_server_error)
+
     return app
+
+def page_not_found(e):
+    return render_template('404.html'), 404
+
+def internal_server_error(e):
+    return render_template('500.html'), 500
 
