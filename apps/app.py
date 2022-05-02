@@ -25,6 +25,8 @@ def create_app():
         SQLALCHEMY_ECHO=True,
         WTF_CSRF_SECRET_KEY='alsdkjqlekjr',
         UPLOAD_FOLDER=str(Path(basedir,'apps','detector','images')),
+        # UPLOAD_FOLDER=str(Path(basedir,'tests','detector','images')), # Use for test
+        # WTF_CSRF_ENABLED=False, # Use for test
         LABELS=[
             "unlabeled",
             "person",

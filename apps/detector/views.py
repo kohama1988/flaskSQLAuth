@@ -34,8 +34,8 @@ def index():
             db.session.query(UserImageTag).filter(UserImageTag.user_image_id==user_image.UserImage.id).all()
         )
         user_image_tag_dict[user_image.UserImage.id] = user_image_tags
-        detector_form = DetectorForm()
-        delete_form = DeleteForm()
+    detector_form = DetectorForm()
+    delete_form = DeleteForm()
     return render_template('detector/index.html', user_images=user_images,
                            user_image_tag_dict=user_image_tag_dict,
                            detector_form=detector_form,
